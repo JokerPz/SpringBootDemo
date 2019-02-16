@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://10.20.91.130/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.online.college.dao.CourseDao">
+
+	<resultMap id="BeanResultMap" type="com.online.college.domain.Course" >
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="name" property="name"  jdbcType="VARCHAR" />
+		<result column="type" property="type"  jdbcType="VARCHAR" />
+		<result column="classify" property="classify"  jdbcType="VARCHAR" />
+		<result column="classify_name" property="classifyName"  jdbcType="VARCHAR" />
+		<result column="sub_classify" property="subClassify"  jdbcType="VARCHAR" />
+		<result column="sub_classify_name" property="subClassifyName"  jdbcType="VARCHAR" />
+		<result column="direction" property="direction"  jdbcType="VARCHAR" />
+		<result column="username" property="username"  jdbcType="VARCHAR" />
+		<result column="level" property="level"  jdbcType="INTEGER" />
+		<result column="free" property="free"  jdbcType="INTEGER" />
+		<result column="price" property="price"  jdbcType="DECIMAL" />
+		<result column="time" property="time"  jdbcType="VARCHAR" />
+		<result column="onsale" property="onsale"  jdbcType="INTEGER" />
+		<result column="picture" property="picture"  jdbcType="VARCHAR" />
+		<result column="brief" property="brief"  jdbcType="VARCHAR" />
+		<result column="recommend" property="recommend"  jdbcType="INTEGER" />
+		<result column="weight" property="weight"  jdbcType="INTEGER" />
+		<result column="study_count" property="studyCount"  jdbcType="INTEGER" />
+		<result column="create_time" property="createTime"  jdbcType="DATE" />
+		<result column="create_user" property="createUser"  jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime"  jdbcType="TIMESTAMP" />
+		<result column="update_user" property="updateUser"  jdbcType="VARCHAR" />
+		<result column="del" property="del"  jdbcType="TINYINT" />
+	</resultMap> 
+
+	<sql id="All_Columns">
+		name, type, classify, classify_name, sub_classify, sub_classify_name, direction, username, 
+		level, free, price, time, onsale, brief, picture,
+		recommend, weight, study_count, create_time, create_user, update_time, 
+		update_user, del, id 
+	</sql>
+
+	<select id="getFiveCourses" parameterType="com.online.college.domain.Course"  resultMap="BeanResultMap">
+		SELECT
+		<include refid="All_Columns"  />
+		FROM t_course
+		WHERE free = #{free ,jdbcType = INTEGER}
+		AND del = 0
+		LIMIT 0 , 5
+	</select>
+	
+</mapper>
