@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan(basePackages={"com.online.college"})
-@MapperScan("com.online.college.dao")
+@MapperScan("com.online.college.dao" )
 public class OcSpringBootApplication {
 	
 	public static void main(String[] args) {
